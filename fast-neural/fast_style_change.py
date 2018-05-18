@@ -46,4 +46,4 @@ if __name__ == '__main__':
         print('please enter a vaild style image.')
         sys.exit(1)
     out_path = str(time.ctime()).replace(' ', '_').replace(':', '_') + '_' + model + '.jpg'
-    stylize(content_img, model_, out_path)
+    stylize(content_img, model_, out_path, cuda)
