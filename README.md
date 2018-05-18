@@ -1,10 +1,8 @@
 
 # 2018年5月祭 応用物理系工学博覧会　アルゴリズム班展示
 2018年5月19日(土), 20日(日)に開催された[5月祭](https://gogatsusai.jp/91/visitor/)の, 工学部応用物理系([物理工学科](http://www.ap.t.u-tokyo.ac.jp/), [計数工学科](https://www.keisu.t.u-tokyo.ac.jp/))「[工学展覧会](https://ap-phys.net/18/)」で展示したものです.
-
-## 展示ポスター, 理論冊子
-- 展示ポスター:
-- 理論冊子: 
+- 展示ポスター[1](https://github.com/etttttte/mayfest2018/blob/master/algorithm_NN_poster_1.pdf), [2](https://github.com/etttttte/mayfest2018/blob/master/algorithm_NN_poster_2.pdf)
+- [理論冊子](https://github.com/etttttte/mayfest2018/blob/master/algorithm_NN_theory.pdf)
 
 
 ## CNNとVGG16
