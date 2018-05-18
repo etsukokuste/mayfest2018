@@ -7,12 +7,14 @@ from torchvision.models import vgg16
 
 from vgg16 import Vgg16
 
-def tensor_load_rgbimage(filename, size=None, scale=None):
+def tensor_load_rgbimage(filename, scale=2, size=None):
     img = Image.open(filename)
+    img_size = img.size[0] * img.size[1]
     if size is not None:
         img = img.resize((size, size), Image.ANTIALIAS)
-    elif scale is not None:
+    while img_size > 500000:
         img = img.resize((int(img.size[0] / scale), int(img.size[1] / scale)), Image.ANTIALIAS)
+        img_size = img.size[0] * img.size[1]
     img = np.array(img).transpose(2, 0, 1)
     img = torch.from_numpy(img).float()
     return img
