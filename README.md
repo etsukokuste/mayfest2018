@@ -1,3 +1,4 @@
+
 # 2018年5月祭 応用物理系工学博覧会　アルゴリズム班展示
 2018年5月19日(土), 20日(日)に開催された[5月祭](https://gogatsusai.jp/91/visitor/)の, 工学部応用物理系([物理工学科](http://www.ap.t.u-tokyo.ac.jp/), [計数工学科](https://www.keisu.t.u-tokyo.ac.jp/))「[工学展覧会](https://ap-phys.net/18/)」で展示したものです.
 当日展示, 配布した資料は以下にアップロードしてあります.
@@ -37,10 +38,9 @@ CPU環境で数十分～数時間かかります.
 学習には[Microsoft COCO Dataset](http://cocodataset.org/#home)のtrain2014(~80k枚, 13GB)を用いました. 
 GPU環境で2epochの学習に9-10時間かかります.
 
-実装には,
+実装には, 以下を参考にしました.
 - https://github.com/jcjohnson/fast-neural-style
-- https://github.com/abhiskk/fast-neural-style  
-を参考にしました.
+- https://github.com/abhiskk/fast-neural-style
 
 
 ### おまけ: VGG16のその他の応用例 - 転移学習(transfer learning)
