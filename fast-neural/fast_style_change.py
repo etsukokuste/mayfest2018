@@ -31,17 +31,16 @@ if __name__ == '__main__':
     images = sys.argv
     content_img = images[1]
     model = images[2]
-    # out_path = images[3]
     cuda = torch.cuda.is_available()
 
     if model == '0':
-        model_ = 'results/epoch_2_Fri_May_11_19_25_56_2018_1.0_50.0.model'
+        model_ = 'models/balla_circular_planes.model'
     elif model == '1':
-        model_ = 'results/epoch_2_Sat_May_12_22_52_27_2018_1.0_50.0.model'
+        model_ = 'models/dubuffet_fugitive_presences.model'
     elif model == '2':
-        model_ = 'results/epoch_2_Mon_May_14_22_38_32_2018_1.0_50.0.model'
+        model_ = 'models/gogh_irises.model'
     elif model == '3':
-        model_ = 'results/epoch_2_Fri_May_18_01_59_43_2018_1.0_500.0.model'
+        model_ = 'models/munch_the_scream.model'
     else:
         print('please enter a vaild style image.')
         sys.exit(1)
