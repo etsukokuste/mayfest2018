@@ -1,7 +1,7 @@
 # リアルタイム画風変換
 
 - 学習済みモデルを利用して画風変換したい場合 :  
-      [models](https://github.com/etttttte/mayfest2018/tree/master/fast-neural/models)をダウウンロードしたのち,  
+      [models](https://github.com/etttttte/mayfest2018/tree/master/fast-neural/models)をダウンロードしたのち,  
       `$python fast_style_change.py content_img model`  
       model = {0:Balla, 1:Dubuffet, 2:Gogh, 3:Munch} です.
  
