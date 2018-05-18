@@ -33,16 +33,17 @@ if __name__ == '__main__':
     model = images[2]
     # out_path = images[3]
     cuda = torch.cuda.is_available()
-    print(cuda)
 
     if model == '0':
-        model_ = 'models/epoch_2_Fri_May_11_19_25_56_2018_1.0_50.0.model'
+        model_ = 'results/epoch_2_Fri_May_11_19_25_56_2018_1.0_50.0.model'
     elif model == '1':
-        model_ = 'models/epoch_2_Sat_May_12_22_52_27_2018_1.0_50.0.model'
+        model_ = 'results/epoch_2_Sat_May_12_22_52_27_2018_1.0_50.0.model'
     elif model == '2':
-        model_ = 'models/epoch_2_Mon_May_14_22_38_32_2018_1.0_50.0.model'
+        model_ = 'results/epoch_2_Mon_May_14_22_38_32_2018_1.0_50.0.model'
+    elif model == '3':
+        model_ = 'results/epoch_2_Fri_May_18_01_59_43_2018_1.0_500.0.model'
     else:
         print('please enter a vaild style image.')
         sys.exit(1)
     out_path = str(time.ctime()).replace(' ', '_').replace(':', '_') + '_' + model + '.jpg'
-    stylize(content_img, model_, out_path, cuda)
+    stylize(content_img, model_, out_path)
