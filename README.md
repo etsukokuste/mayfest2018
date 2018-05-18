@@ -1,4 +1,3 @@
-
 # 2018年5月祭 応用物理系工学博覧会　アルゴリズム班展示
 2018年5月19日(土), 20日(日)に開催された[5月祭](https://gogatsusai.jp/91/visitor/)の, 工学部応用物理系([物理工学科](http://www.ap.t.u-tokyo.ac.jp/), [計数工学科](https://www.keisu.t.u-tokyo.ac.jp/))「[工学展覧会](https://ap-phys.net/18/)」で展示したものです.
 当日展示, 配布した資料は以下にアップロードしてあります.
@@ -34,7 +33,7 @@ CPU環境で数十分～数時間かかります.
 
 新たに変換器を学習したい場合は,  
 `$python fast_style_train.py`  
-で学習できます. その場合, fast_style_train.py内のline 127を学習したいスタイル画像へのパスに書き換えて下さい.
+で学習できます. その場合, fast_style_train.py内のline 1を学習したいスタイル画像へのパスに書き換えて下さい.
 学習には[Microsoft COCO Dataset](http://cocodataset.org/#home)のtrain2014(~80k枚, 13GB)を用いました. 
 GPU環境で2epochの学習に9-10時間かかります.
 
