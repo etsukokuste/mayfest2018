@@ -1,3 +1,6 @@
+# originally written by Abhishek Kadian
+# https://github.com/abhiskk/fast-neural-style/blob/master/neural_style/transformer_net.py
+
 import torch
 import torch.nn as nn
 import numpy as np

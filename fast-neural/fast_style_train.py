@@ -1,3 +1,6 @@
+# originally written by Abhishek Kadian
+# https://github.com/abhiskk/fast-neural-style/blob/master/neural_style/neural_style.py
+
 import os
 import time
 
@@ -13,7 +16,7 @@ from transformer_net import TransformerNet
 from vgg16 import Vgg16
 
 
-def train(data_dir, style_image, cuda=False, epochs=2, batch_size=4, image_size=256, seed=42, lr=1e-3, content_weight=1.0, style_weight=50.0):
+def train(data_dir, style_image, cuda=False, epochs=2, batch_size=4, image_size=256, seed=42, lr=1e-3, content_weight=1.0, style_weight=10.0):
     np.random.seed(seed)
     torch.manual_seed(seed)
 
@@ -37,7 +40,7 @@ def train(data_dir, style_image, cuda=False, epochs=2, batch_size=4, image_size=
     mse_loss = torch.nn.MSELoss()
 
     vgg = Vgg16()
-    vgg_model_dir = 'models'  # VGG model dir
+    vgg_model_dir = 'models'  # VGG16のディレクトリ
     utils.init_vgg16(vgg_model_dir)
     vgg.load_state_dict(torch.load(vgg_model_dir+'/vgg16.weight'))
 
@@ -100,8 +103,8 @@ def train(data_dir, style_image, cuda=False, epochs=2, batch_size=4, image_size=
                 agg_content_loss += content_loss.data[0]
                 agg_style_loss += style_loss.data[0]
 
-            if (batch_id + 1) % 20 == 0:
-                mesg = "{}\tEpoch {}:\t[{}/{}]\tcontent: {:.6f}\tstyle: {:.6f}\ttotal: {:.6f}".format(
+            if (batch_id + 1) % 1000 == 0:
+                mesg = '{}\tEpoch {}:\t[{}/{}]\tcontent: {:.6f}\tstyle: {:.6f}\ttotal: {:.6f}'.format(
 
                     time.ctime(), e + 1, count, len(train_dataset),
                                   agg_content_loss / (batch_id + 1),
@@ -111,22 +114,22 @@ def train(data_dir, style_image, cuda=False, epochs=2, batch_size=4, image_size=
                 print(mesg)
 
 
-    # save model
+    # モデルの保存
     transformer.eval()
     transformer.cpu()
-    save_model_filename = "/epoch_" + str(epochs) + "_" + str(time.ctime()).replace(' ', '_').replace(':', '_') + "_" + str(content_weight) + "_" + str(style_weight) + ".model"
-    save_model_dir = 'models' # save model dir
+    save_model_filename = '/epoch_' + str(epochs) + '_' + str(time.ctime()).replace(' ', '_').replace(':', '_') + '_' + str(content_weight) + "_" + str(style_weight) + '.model'
+    save_model_dir = 'models' # モデルの保存先
     save_model_path = save_model_dir + save_model_filename
     torch.save(transformer.state_dict(), save_model_path)
 
-    print("\nDone, trained model saved at", save_model_path)
+    print('\nDone, trained model saved at', save_model_path)
 
 
 if __name__ == '__main__':
-    data_dir = 'data'
-    style_image = 'images/1590.jpg'
+    data_dir = 'data' # train datasetのディレクトリ
+    style_image = 'images/1590.jpg' # 学習するスタイル画像
 
     cuda = torch.cuda.is_available()
-    print(cuda)
+    # print(cuda)
 
     train(data_dir, style_image, cuda=cuda)

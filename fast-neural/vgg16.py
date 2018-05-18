@@ -1,3 +1,6 @@
+# originally written by Abhishek Kadian
+# https://github.com/abhiskk/fast-neural-style/blob/master/neural_style/vgg16.py
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

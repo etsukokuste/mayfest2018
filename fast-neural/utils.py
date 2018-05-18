@@ -1,3 +1,6 @@
+# originally written by Abhishek Kadian
+# https://github.com/abhiskk/fast-neural-style/blob/master/neural_style/utils.py
+
 import os
 import numpy as np
 import torch
@@ -7,12 +10,11 @@ from torchvision.models import vgg16
 
 from vgg16 import Vgg16
 
-def tensor_load_rgbimage(filename, scale=2, size=None):
+def tensor_load_rgbimage(filename, scale=2):
+    # 画像->tensor
     img = Image.open(filename)
     img_size = img.size[0] * img.size[1]
-    if size is not None:
-        img = img.resize((size, size), Image.ANTIALIAS)
-    while img_size > 500000:
+    while img_size > 500000: # 画像サイズを圧縮
         img = img.resize((int(img.size[0] / scale), int(img.size[1] / scale)), Image.ANTIALIAS)
         img_size = img.size[0] * img.size[1]
     img = np.array(img).transpose(2, 0, 1)
@@ -20,6 +22,7 @@ def tensor_load_rgbimage(filename, scale=2, size=None):
     return img
 
 def tensor_save_rgbimage(tensor, filename, cuda=False):
+    # tensor->画像
     if cuda:
         img = tensor.clone().cpu().clamp(0, 255).numpy()
     else:
@@ -27,11 +30,6 @@ def tensor_save_rgbimage(tensor, filename, cuda=False):
     img = img.transpose(1, 2, 0).astype('uint8')
     img = Image.fromarray(img)
     img.save(filename)
-
-def tensor_save_bgrimage(tensor, filename, cuda=False):
-    (b, g, r) = torch.chunk(tensor, 3)
-    tensor = torch.cat((r, g, b))
-    tensor_save_rgbimage(tensor, filename, cuda)
 
 def gram_matrix(y):
     (b, ch, h, w) = y.size()
@@ -60,6 +58,7 @@ def preprocess_batch(batch):
     return batch
 
 def init_vgg16(model_folder):
+    # VGG16の重みを初期化
     if not os.path.exists(model_folder+'/vgg16.weight'):
         vgg_load = vgg16(pretrained=True)
         vgg = Vgg16()

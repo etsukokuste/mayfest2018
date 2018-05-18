@@ -1,6 +1,8 @@
+# originally written by Abhishek Kadian
+# https://github.com/abhiskk/fast-neural-style/blob/master/neural_style/neural_style.py
+
 import sys
 import time
-
 import torch
 from torch.autograd import Variable
 
