@@ -28,12 +28,12 @@ CPU環境で数十分～数時間かかります.
 この問題を解決したのが[Johnson et al.(2016)](http://arxiv.org/abs/1603.08155)です. スタイル画像ごとに変換器を事前に学習しておくことで, 画風変換自体のスピードが1000倍程度高速化しました.
 
 [学習済みのモデル](https://github.com/etttttte/mayfest2018/tree/master/fast-neural/models)をダウンロードしたのち,  
-`$python fast_style_change.py content_image model`  
+`$python fast_style_change.py content_img model`  
 で実行されます. content_imgは変換したいコンテンツ画像(.jpg)へのパス, model = {0:Balla, 1:Dubuffet, 2:Gogh, 3:Munch} です.
 
 新たに変換器を学習したい場合は,  
 `$python fast_style_train.py`  
-で学習できます. その場合, fast_style_train.py内のline 1を学習したいスタイル画像へのパスに書き換えて下さい.
+で学習できます. その場合, fast_style_train.py内のline 130を学習したいスタイル画像へのパスに書き換えて下さい.
 学習には[Microsoft COCO Dataset](http://cocodataset.org/#home)のtrain2014(~80k枚, 13GB)を用いました. 
 GPU環境で2epochの学習に9-10時間かかります.
 
