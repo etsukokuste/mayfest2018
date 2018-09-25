@@ -6,9 +6,8 @@ This is PyTorch implementation of Real-Time Style Transfer.
       `$python fast_style_change.py content_img model`  
       model = {0:Balla, 1:Dubuffet, 2:Gogh, 3:Munch} です.
  
-- 新たな変換器を学習したい場合 :  
-      fast_style_train.pyのline 130のスタイル画像へのパスを書き換えたのち,  
-      `$python fast_style_train.py`  
+- 新たな変換器を学習したい場合 :   
+      `$python fast_style_train.py train_data_dir path_to_style_img`  
   
     
 - testing with pretrained models:
@@ -17,7 +16,7 @@ This is PyTorch implementation of Real-Time Style Transfer.
      'content_img' is the path to your content image (.jpg) and model = {0:Balla, 1:Dubuffet, 2:Gogh, 3:Munch}.
      
 - training a new model:  
-  `$python fast_style_train.py path_to_style_img` 
+  `$python fast_style_train.py train_data_dir path_to_style_img` 
   
       
 ### contents of this directory
