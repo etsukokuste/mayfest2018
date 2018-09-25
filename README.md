@@ -1,4 +1,3 @@
-# 2018年5月祭 応用物理系工学博覧会　アルゴリズム班展示
 # Exhibition of Algorithm Section, the Exhibition of Engineering, 91st May Festival, the University of Tokyo
 2018年5月19日(土), 20日(日)に開催された[5月祭](https://gogatsusai.jp/91/visitor/)の, 工学部応用物理系([物理工学科](http://www.ap.t.u-tokyo.ac.jp/), [計数工学科](https://www.keisu.t.u-tokyo.ac.jp/))「[工学展覧会](https://ap-phys.net/18/)」で展示したものです.
 当日展示, 配布した資料は以下にアップロードしてあります.
@@ -23,14 +22,15 @@ Python3, PyTorchで実装しています.
 Artificial Intelligence is at the center of attention these days. Although it looks like magic or alchemy, it is just "computation." In the exhibition focused on CNN (convolutional neural network), visitors experienced for themselves from CNN’s historical background and theoretical basis to one of CNN applications "neural style transfer."
 In this repository, you can find codes on neural style transfer implemented in Python3 and PyTorch. Learned models are also available.
 
-### 画風変換(Neural Style Transfer)
+
+## Neural Style Transfer(画風変換)
 画風変換とは, コンテンツ画像とスタイル画像が与えられた時, コンテンツの情報をできるだけ保ったままスタイル画像に画風を寄せた画像を出力するアルゴリズムです.
 例えば, 赤門の写真をゴッホ風やムンク風に変換できます.
 画像がVGGを通ることで, 段々スタイルに関する情報が捨てられ, コンテンツに関する情報のみが抽出されていくという性質を活用しています.
 
 Neural style transfer is an algorithm that outputs an image that keeps the contents of a given contents image as much as possible but in the texture of a given style reference image. As you can see above, we can blend a picture of [Akamon Gate](https://www.u-tokyo.ac.jp/en/whyutokyo/hongo_hi_007.html) with “Gogh” texture or “Munch” texture. This algorithm is using the fact that the information of style is gradually lost and only information of contents is extracted by passing images through VGG.
 
-#### Original
+### Original
 [Gatys et al. (2015)](https://arxiv.org/abs/1508.06576)によって提唱されたアルゴリズムです. PyTorch公式の[チュートリアル](http://pytorch.org/tutorials/advanced/neural_style_tutorial.html)にほぼ従っています.  `$python neural_style_transfer.py style_img content_img`  
 で実行されます.
 CPU環境で数十分～数時間かかります.
@@ -40,7 +40,7 @@ The original algorithm was introduced in [Gatys et al. (2015)](https://arxiv.org
 It will take tens of minutes or hours with CPU.
 
 
-#### Real-Time Style Transfer
+### Real-Time Style Transfer
 オリジナルのアルゴリズムは任意のコンテンツ画像を任意のスタイル画像に変換できる一方, 毎回変換器を学習するため変換に時間がかかります.
 この問題を解決したのが[Johnson et al. (2016)](http://arxiv.org/abs/1603.08155)です. スタイル画像ごとに変換器を事前に学習しておくことで, 画風変換自体のスピードが1000倍程度高速化しました.
 
@@ -64,13 +64,12 @@ When training a new model, run:
 `$python fast_style_train.py path_to_style_img`  
 [Microsoft COCO Dataset](http://cocodataset.org/#home) train2014 (~80k images, 13GB) was used for training. It will take roughly 10 hours for 2 epoch training with GPU.
 
-
 You can also refer:
 - https://github.com/jcjohnson/fast-neural-style
 - https://github.com/abhiskk/fast-neural-style
 
 
-### おまけ: Dog or Cat? Another Application of VGG16: Transfer Learning (転移学習)
+## おまけ: Dog or Cat? Another Application of VGG16: Transfer Learning (転移学習)
 2010年代初頭まで, 人間にできて人工知能にできないことの代表例だった「[犬猫の分類](https://github.com/etttttte/mayfest2018/blob/master/dog_or_cat.ipynb)」.
 今では学習済みVGG16を用いてお手軽に実装することができます.
 
