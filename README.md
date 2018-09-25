@@ -49,7 +49,7 @@ It will take tens of minutes or hours with CPU.
 で実行されます. content_imgは変換したいコンテンツ画像(.jpg)へのパス, model = {0:Balla, 1:Dubuffet, 2:Gogh, 3:Munch} です.
 
 新たに変換器を学習したい場合は,  
-`$python fast_style_train.py style_img`  
+`$python fast_style_train.py train_data_dir style_img`  
 で学習できます. 
 学習には[Microsoft COCO Dataset](http://cocodataset.org/#home)のtrain2014(~80k枚, 13GB)を用いました. 
 GPU環境で2epochの学習に9-10時間かかります.
@@ -61,7 +61,7 @@ When testing pretrained models, download [pretrained models](https://github.com/
 ‘content_img’ is a path to your content image (.jpg), and ‘model’ = {0:Balla, 1:Dubuffet, 2:Gogh, 3:Munch}.
 
 When training a new model, run:  
-`$python fast_style_train.py path_to_style_img`  
+`$python fast_style_train.py train_data_dir style_img`  
 [Microsoft COCO Dataset](http://cocodataset.org/#home) train2014 (~80k images, 13GB) was used for training. It will take roughly 10 hours for 2 epoch training with GPU.
 
 You can also refer:
