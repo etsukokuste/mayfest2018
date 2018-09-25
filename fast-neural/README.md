@@ -21,14 +21,6 @@ This is PyTorch implementation of Real-Time Style Transfer.
   
       
 ### contents of this directory
-- vgg16.py: Loss FunctionとしてカスタマイズしたVGG16
-- transformer_net.py: 変換器本体
-- utils.py: 画像読込, VGG16の重み初期化etc.
-- fast_style_train.py: 変換器の学習
-- fast_style_change.py: 学習済みの変換器を用いて画風変換を行う
-- models: 学習済みのモデル
-- images: 学習したスタイル画像, 画風変換した赤門たち
-
 - vgg16.py: customized VGG16 for loss function
 - transformer_net.py: Image Transformer Net
 - utils.py: loading images, VGG16 weights initialization etc.
