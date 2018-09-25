@@ -1,9 +1,14 @@
 # originally written by Abhishek Kadian
 # https://github.com/abhiskk/fast-neural-style/blob/master/neural_style/neural_style.py
 
-import os
-import time
+"""
+how to use:
+1. download Microsoft COCO dataset (or similar dataset)
+2. $python fast_style_train.py train_data_dir path_to_style_img
+"""
 
+import time
+import sys
 import numpy as np
 import torch
 from torch.autograd import Variable
@@ -11,9 +16,9 @@ from torch.optim import Adam
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 
-import utils
-from transformer_net import TransformerNet
-from vgg16 import Vgg16
+from . import utils
+from .transformer_net import TransformerNet
+from .vgg16 import Vgg16
 
 
 def train(data_dir, style_image, cuda=False, epochs=2, batch_size=4, image_size=256, seed=42, lr=1e-3, content_weight=1.0, style_weight=10.0):
@@ -40,7 +45,7 @@ def train(data_dir, style_image, cuda=False, epochs=2, batch_size=4, image_size=
     mse_loss = torch.nn.MSELoss()
 
     vgg = Vgg16()
-    vgg_model_dir = 'models'  # VGG16のディレクトリ
+    vgg_model_dir = 'models'  # directory of VGG16
     utils.init_vgg16(vgg_model_dir)
     vgg.load_state_dict(torch.load(vgg_model_dir+'/vgg16.weight'))
 
@@ -113,12 +118,11 @@ def train(data_dir, style_image, cuda=False, epochs=2, batch_size=4, image_size=
                 )
                 print(mesg)
 
-
-    # モデルの保存
+    # save a trained model
     transformer.eval()
     transformer.cpu()
     save_model_filename = '/epoch_' + str(epochs) + '_' + str(time.ctime()).replace(' ', '_').replace(':', '_') + '_' + str(content_weight) + "_" + str(style_weight) + '.model'
-    save_model_dir = 'models' # モデルの保存先
+    save_model_dir = 'models'  # save model dir
     save_model_path = save_model_dir + save_model_filename
     torch.save(transformer.state_dict(), save_model_path)
 
@@ -126,10 +130,10 @@ def train(data_dir, style_image, cuda=False, epochs=2, batch_size=4, image_size=
 
 
 if __name__ == '__main__':
-    data_dir = 'data' # train datasetのディレクトリ
-    style_image = 'images/1590.jpg' # 学習するスタイル画像
+    args = sys.argv
+    data_dir = args[1]
+    style_image = args[2]
 
     cuda = torch.cuda.is_available()
-    # print(cuda)
 
     train(data_dir, style_image, cuda=cuda)

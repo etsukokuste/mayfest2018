@@ -1,13 +1,20 @@
 # originally written by Abhishek Kadian
 # https://github.com/abhiskk/fast-neural-style/blob/master/neural_style/neural_style.py
 
+"""
+how to use:
+1. download Microsoft COCO dataset (or similar dataset)
+2. $python fast_style_train.py content_img model
+   model = {0:Balla, 1:Dubuffet, 2:Gogh, 3:Munch}
+"""
+
 import sys
 import time
 import torch
 from torch.autograd import Variable
 
-import utils
-from transformer_net import TransformerNet
+from . import utils
+from .transformer_net import TransformerNet
 
 
 def stylize(content_image, model, output_image_path, cuda=False):
@@ -36,15 +43,16 @@ if __name__ == '__main__':
     cuda = torch.cuda.is_available()
 
     if model == '0':
-        model_ = 'models/balla_circular_planes.model'
+        pretrained_model = 'models/balla_circular_planes.model'
     elif model == '1':
-        model_ = 'models/dubuffet_fugitive_presences.model'
+        pretrained_model = 'models/dubuffet_fugitive_presences.model'
     elif model == '2':
-        model_ = 'models/gogh_irises.model'
+        pretrained_model = 'models/gogh_irises.model'
     elif model == '3':
-        model_ = 'models/munch_the_scream.model'
+        pretrained_model = 'models/munch_the_scream.model'
     else:
         print('please enter a vaild style image.')
         sys.exit(1)
+
     out_path = str(time.ctime()).replace(' ', '_').replace(':', '_') + '_' + model + '.jpg'
-    stylize(content_img, model_, out_path, cuda)
+    stylize(content_img, pretrained_model, out_path, cuda)
